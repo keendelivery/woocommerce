@@ -1,0 +1,91 @@
+#keendelivery_order_info .loading {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#keendelivery_order_info .message {
+    background-color: #EFEFEF;
+    padding: 10px;
+}
+
+#keendelivery_order_info .grey {
+    color: #999;
+}
+
+#keendelivery_order_info h4 {
+    margin: 0.5em 0 0.25em 0 !important;
+}
+
+#keendelivery_order_info .send_order {
+    float: right;
+    position: relative;
+    top: 7px;
+}
+
+#keendelivery_order_info .send_tracktrace {
+    position: relative;
+    top: 7px;
+}
+
+#keendelivery_order_info .pickup_date, #keendelivery_order_info .number_of_packages {
+    width: 100%;
+}
+
+#keendelivery_order_info .clearfix {
+    clear: both;
+}
+
+#keendelivery_order_info .jet_track_trace_info {
+    margin-top: 10px;
+}
+
+#keendelivery_order_info select {
+    width: 100%;
+}
+
+.jet_label_printed {
+    text-align: center;
+
+}
+
+.jet_label_printed.yes {
+    background-color: #3CB860;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.jet_label_printed.no {
+    background-color: #E41100;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.column-labels_printed {
+    width: 130px;
+}
+
+.keendelivery_small {
+    font-size: 11px;
+    position: relative;
+    top: 15px;
+}
+
+.jet_grey {
+    color: #999;
+}
+
+.jet_red {
+    color:#f00
+}
+
+.jet_green {
+    color:green;
+}
+

@@ -288,8 +288,8 @@ class KeenDelivery_Settings {
 
 		echo '  <option value="DEFAULT" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == 'DEFAULT' ) ? 'selected="selected"' : '' ) . '>1x A6 label</option>';
 		echo '  <option value="4XA6" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == '4XA6' ) ? 'selected="selected"' : '' ) . '>4x A6 labels per A4 pagina</option>';
-		echo '  <option value="A5" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == 'A5' ) ? 'selected="selected"' : '' ) . '>1x A5 label (alleen Fadello/PostNL)</option>';
-		echo '  <option value="2XA5" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == '2XA5' ) ? 'selected="selected"' : '' ) . '>2x A5 labels per A4 pagina (alleen Fadello/PostNL)</option>';
+		echo '  <option value="A5" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == 'A5' ) ? 'selected="selected"' : '' ) . '>1x A5 label (alleen PostNL)</option>';
+		echo '  <option value="2XA5" ' . ( ( isset( $this->options['jet_printer_label'] ) && $this->options['jet_printer_label'] == '2XA5' ) ? 'selected="selected"' : '' ) . '>2x A5 labels per A4 pagina (alleen PostNL)</option>';
 
 		echo '</select>';
 	}

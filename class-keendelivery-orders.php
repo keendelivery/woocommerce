@@ -164,13 +164,6 @@ class KeenDelivery_Orders {
 
 		echo '  <h4>Verzending is aangemeld</h4>';
 
-
-
-
-
-
-
-
 		echo '  <h4>Labels</h4>';
 		echo '  <a href="edit.php?post_type=shop_order&action=print_keendelivery_labels&post[]=' . $order_id . '">Print labels</a>';
 
@@ -178,12 +171,9 @@ class KeenDelivery_Orders {
 
 
 		if ( isset( $track_trace ) && ! empty( $track_trace ) ) {
-
 			foreach ( $track_trace as $key => $url ) {
 				echo '<a href="' . esc_url( $url ) . '" target="_blank">' . esc_html( $key ) . '</a><br/>';
-
 			}
-
 			$options = get_option( 'keendelivery_option_name' );
 			if ( isset( $shipper ) && $shipper == 'DHL' && isset( $options['jet_auto_tracktrace'] ) && $options['jet_auto_tracktrace'] == 1 ) {
 				echo 'De track&trace mail wordt automatisch verzonden.';
@@ -192,20 +182,14 @@ class KeenDelivery_Orders {
 				echo '  <div class="jet_track_trace_info">Track&trace informatie is verstuurd. <a onclick="keendelivery_send_track_trace('
 				     . esc_attr( $order_id ) . ', \'' . wp_create_nonce( 'jet_send_orders' )
 				     . '\'); return false" href="javascript:void(0);">Opnieuw versturen?</a></div>';
-
 			} else {
 				echo '<button class="button button-primary send_tracktrace" id="jet_send_track_trace" onclick="keendelivery_send_track_trace('
 				     . esc_attr( $order_id ) . ', \'' . wp_create_nonce( 'jet_send_orders' ) . '\'); return false">Verstuur Trace&trace</button>';
-
 			}
 			echo '	<div class="clearfix"></div>';
-
 		}
-
-
 		echo '	</li>';
 		echo '</ul>';
-
 	}
 
 
@@ -232,9 +216,7 @@ class KeenDelivery_Orders {
 				}
 			}
 		}
-
 		return false;
-
 	}
 
 
@@ -315,9 +297,7 @@ class KeenDelivery_Orders {
 					if ( $api_status == 'live' ) {
 						$ch = curl_init( 'https://portal.keendelivery.com/api/v2/shipment?api_token=' . $api_token );
 					} else {
-						$ch = curl_init( 'http://testportal.keendelivery.com/api/v2/shipment?api_token=' . $api_token );
-						$api_token = '6NsAWORewR5qg5PBpDZcaw4ctQu678urOBA7cTiu';
-						$ch = curl_init( 'jetverzendt.app/api/v2/shipment?api_token=' . $api_token );
+						$ch = curl_init( 'https://testportal.keendelivery.com/api/v2/shipment?api_token=' . $api_token );
 					}
 
 					curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -343,6 +323,8 @@ class KeenDelivery_Orders {
 						update_post_meta( $order_id, '_keendelivery_label_printed', '' );
 						update_post_meta( $order_id, '_keendelivery_jet_shipment_id', $result->shipment_id );
 						update_post_meta( $order_id, '_keendelivery_jet_updated_at', date_i18n( "Y-m-d H:i:s" ) );
+                        update_post_meta( $order_id, '_keendelivery_jet_track_trace',
+                            ( isset( $result->track_and_trace ) ) ? get_object_vars( $result->track_and_trace ) : '' );
 
 						//echo $result->shipment_id;
 						echo "1";
@@ -511,16 +493,10 @@ class KeenDelivery_Orders {
 
 						echo 'Bijgewerkt: ' . $order->ID . '<br/>';
 					}
-
-
 				}
-
-
 			}
 			exit;
 		}
-
-
 	}
 
 
@@ -725,17 +701,15 @@ class KeenDelivery_Orders {
 				} else {
 					$ch = curl_init( 'http://testportal.keendelivery.com/api/v2/label?api_token=' . $api_token );
 				}
-
-
+				$label_sizes = array();
+                foreach(json_decode(get_option('_keendelivery_shipping_methods')) as $shipping_methods){
+                    $label_sizes[$shipping_methods->value] = ['size' => strtoupper( $printer_label )];
+                }
 				$label_data = json_encode(
 					array(
 						'shipments' => $jet_ids,
 						'type'      => strtoupper( $printer_method ),
-						'options'   => array(
-							'DHL'     => array( 'size' => strtoupper( $printer_label ) ),
-							'DPD'     => array( 'size' => strtoupper( $printer_label ) ),
-							'Fadello' => array( 'size' => strtoupper( $printer_label ) )
-						)
+						'options'   => $label_sizes
 					)
 				);
 

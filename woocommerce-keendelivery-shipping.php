@@ -3,7 +3,7 @@
 	Plugin Name: KeenDelivery - WooCommerce Shipping plugin
 	Plugin URI: http://www.keendelivery.nl/
 	Description: Een plugin van KeenDelivery voor WooCommerce waarmee op handige wijze gecommuniceerd kan worden met de KeenPortal.
-	Version: 1.0
+	Version: 1.0.2
 	Author: KeenDelivery
 	Author URI: http://www.keendelivery.nl
 
@@ -16,7 +16,7 @@
  */
 defined( 'ABSPATH' ) or die( "Sorry, no access..." );
 
-define( 'KEENDELIVERY_VERSION', '1.0' );
+define( 'KEENDELIVERY_VERSION', '1.0.2' );
 
 
 // Load file for general KeenDelivery functions

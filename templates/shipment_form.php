@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             jQuery(function () {
 
                 generate_shipment_form('<?php
-	                $postdata = get_option( 'jet_post_data_shipment_formdata' );
+	                $postdata = urldecode(get_option( 'jet_post_data_shipment_formdata' ));
                     echo $postdata;
                     ?>');
 

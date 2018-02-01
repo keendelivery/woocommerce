@@ -418,8 +418,9 @@ function set_keen_prefered_data(prefered_data) {
 
                     if (element.is(':checkbox'))  {
                         element.prop( "checked", true );
-                    } else if(element.is(':radio') && element.val() === arrValue[1]){
-                        element.prop( "checked", true );
+                    } else if(element.is(':radio')){
+                        radioElement = jQuery('[name="' + arrValue[0] + '"]'+ '[value="' + arrValue[1] + '"]');
+                        radioElement.prop("checked", true);
                     }else {
                         element.val(arrValue[1]);
                     }

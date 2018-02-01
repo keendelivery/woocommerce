@@ -1,7 +1,7 @@
 ﻿=== KeenDelivery - WooCommerce Shipping plugin ===
 Contributors: KeenDelivery
 Tags: ecommerce, e-commerce, shipping, portal, keendelivery, shipment, jet verzendt, jetverzendt, keenportal, keen, delivery, dhl, dpd, tnt, postnl, fadello, same day delivery, next day premium, pallets, parcels
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires at least: 4.0
 Tested up to: 4.7.3
 License: GPLv2
@@ -54,6 +54,7 @@ De API-sleutel vindt u in de KeenPortal onder Instellingen-> Koppelingen
 #1.0.2      26-07-2017
 Fixed not storing Track&Trace
 Now returns labels correctly for all shipping methods
-
-
+#1.0.3
+Fixed BCC email autofilled correctly
+Fixed Radiobuttons autochecked correctly
 == Upgrade Notice ==

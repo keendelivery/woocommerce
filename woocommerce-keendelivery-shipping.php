@@ -2,8 +2,8 @@
 /*
 	Plugin Name: KeenDelivery - WooCommerce Shipping plugin
 	Plugin URI: http://www.keendelivery.nl/
-	Description: Een plugin van KeenDelivery voor WooCommerce waarmee op handige wijze gecommuniceerd kan worden met de KeenPortal.
-	Version: 1.0.2
+	Description: Een plugin van KeenDelivery voor WooCommerce waarmee op eenvoudige wijze labels aan kunt maken voor uw zendingen.
+	Version: 1.0.3
 	Author: KeenDelivery
 	Author URI: http://www.keendelivery.nl
 

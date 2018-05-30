@@ -3,7 +3,7 @@
 	Plugin Name: KeenDelivery - WooCommerce Shipping plugin
 	Plugin URI: http://www.keendelivery.nl/
 	Description: Een plugin van KeenDelivery voor WooCommerce waarmee op eenvoudige wijze labels aan kunt maken voor uw zendingen.
-	Version: 1.0.3
+	Version: 1.0.4
 	Author: KeenDelivery
 	Author URI: http://www.keendelivery.nl
 
@@ -16,7 +16,7 @@
  */
 defined( 'ABSPATH' ) or die( "Sorry, no access..." );
 
-define( 'KEENDELIVERY_VERSION', '1.0.3' );
+define( 'KEENDELIVERY_VERSION', '1.0.4' );
 
 
 // Load file for general KeenDelivery functions

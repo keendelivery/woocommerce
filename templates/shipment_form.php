@@ -42,6 +42,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 generate_shipment_form('<?php
 	                $postdata = urldecode(get_option( 'jet_post_data_shipment_formdata' ));
                     echo $postdata;
+                    ?>',
+                    '<?php
+                        $options = get_option('keendelivery_option_name');
+                        echo $trackAndTrace = isset($options['jet_auto_tracktrace']) ? $options['jet_auto_tracktrace'] : 0;
                     ?>');
 
             })

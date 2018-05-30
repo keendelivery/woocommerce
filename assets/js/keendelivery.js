@@ -1,4 +1,5 @@
 var jet_shipping_methods;
+var send_track_and_trace_mail = false;
 
 function keendelivery_get_order_info(order_id, wp_nonce) {
 
@@ -155,8 +156,8 @@ function set_active_keendelivery(status) {
 }
 
 
-function generate_shipment_form(postdata) {
-
+function generate_shipment_form(postdata, auto_track_and_trace_mail) {
+    send_track_and_trace_mail = auto_track_and_trace_mail;
     jQuery.post(ajaxurl, {
         'action': 'get_shipment_methods'
     }, function (response) {
@@ -362,7 +363,7 @@ function set_keen_service_options() {
                                                 } else if (type == 'hidden') {
                                                     result += ' type="hidden" value="' + jet_shipping_methods[k]['services'][i]['options'][j]['choices']['value'] + '" ';
                                                 } else if (type == 'date') {
-                                                    result += ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" ';
+                                                    result += ' type="text" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" class="datepicker"';
 
 
                                                 }
@@ -393,40 +394,37 @@ function set_keen_service_options() {
     jQuery('#keen_service_options').html('');
     jQuery('#keen_service_options').html(result);
 
-    jQuery('[type=date]').datepicker({dateFormat: 'dd-mm-yy'});
+    jQuery('.datepicker').datepicker({dateFormat: 'dd-mm-yy'});
+
+    jQuery('[name="send_track_and_trace_email"]').prop("checked", +send_track_and_trace_mail);
 }
 
 function set_keen_prefered_data(prefered_data) {
+    var arrayOfStrings = prefered_data.split('&');
+    for (i = 0; i < arrayOfStrings.length; i++) {
+        value = arrayOfStrings[i];
+        arrValue = value.split('=');
 
+        element = jQuery('[name="' + arrValue[0] + '"]');
+        if (element) {
+            if (arrValue[0] == 'product') {
+                element.val(arrValue[1]);
+                set_keen_services();
+            } else if (arrValue[0] == 'service') {
+                element.val(arrValue[1]);
+                set_keen_service_options();
 
-        var arrayOfStrings = prefered_data.split('&');
-        for (i = 0; i < arrayOfStrings.length; i++) {
-            value = arrayOfStrings[i];
-            arrValue = value.split('=');
-
-            element = jQuery('[name="' + arrValue[0] + '"]');
-            if (element) {
-                if (arrValue[0] == 'product') {
+            } else {
+                if (element.is(':checkbox'))  {
+                    element.prop( "checked", true );
+                } else if(element.is(':radio')){
+                    radioElement = jQuery('[name="' + arrValue[0] + '"]'+ '[value="' + arrValue[1] + '"]');
+                    radioElement.prop("checked", true);
+                }else {
                     element.val(arrValue[1]);
-                    set_keen_services();
-
-                } else if (arrValue[0] == 'service') {
-                    element.val(arrValue[1]);
-                    set_keen_service_options();
-
-                } else {
-
-                    if (element.is(':checkbox'))  {
-                        element.prop( "checked", true );
-                    } else if(element.is(':radio')){
-                        radioElement = jQuery('[name="' + arrValue[0] + '"]'+ '[value="' + arrValue[1] + '"]');
-                        radioElement.prop("checked", true);
-                    }else {
-                        element.val(arrValue[1]);
-                    }
-
                 }
-
             }
         }
+    }
+    jQuery('[name="send_track_and_trace_email"]').prop("checked", +send_track_and_trace_mail);
 }

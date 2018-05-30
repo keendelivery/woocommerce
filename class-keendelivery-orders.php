@@ -247,8 +247,6 @@ class KeenDelivery_Orders {
 					// get jet verzendt options
 					$options = get_option( 'keendelivery_option_name' );
 
-					$auto_tracktrace = ( isset( $options['jet_auto_tracktrace'] ) && $options['jet_auto_tracktrace'] == 1 ) ? 1 : 0;
-
 					$api_token = ( isset( $options['jet_token'] ) ) ? $options['jet_token'] : false;
 					if ( ! $api_token ) {
 						echo "Ongeldige API-sleutel KeenDelivery";
@@ -288,8 +286,6 @@ class KeenDelivery_Orders {
                         $shipment_data['reference'] = 'Bestelling #' . $order_id;
                     }
 
-
-                    $shipment_data['send_track_and_trace_email'] = $auto_tracktrace;
 					$shipment_data['input_source']               = 'woocommerce';
 
 					// check current api status: live or test
@@ -372,7 +368,7 @@ class KeenDelivery_Orders {
 				if ( $api_status == 'live' ) {
 					$url = 'https://portal.keendelivery.com/api/v2/shipping_methods?api_token=' . $api_token . '&source=woocommerce';
 				} else {
-					$url = 'http://testportal.keendelivery.com/api/v2/shipping_methods?api_token=' . $api_token . '&source=woocommerce';
+					$url = 'https://testportal.keendelivery.com/api/v2/shipping_methods?api_token=' . $api_token . '&source=woocommerce';
 				}
 
 				$ch = curl_init( $url );
@@ -466,7 +462,7 @@ class KeenDelivery_Orders {
 					if ( $api_status == 'live' ) {
 						$ch = curl_init( 'https://portal.keendelivery.com/api/v2/shipment/' . $order->jet_shipment_id . '?api_token=' . $api_token );
 					} else {
-						$ch = curl_init( 'http://testportal.keendelivery.com/api/v2/shipment/' . $order->jet_shipment_id . '?api_token=' . $api_token );
+						$ch = curl_init( 'https://testportal.keendelivery.com/api/v2/shipment/' . $order->jet_shipment_id . '?api_token=' . $api_token );
 					}
 					curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 					curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
@@ -699,7 +695,7 @@ class KeenDelivery_Orders {
 				if ( $api_status == 'live' ) {
 					$ch = curl_init( 'https://portal.keendelivery.com/api/v2/label?api_token=' . $api_token );
 				} else {
-					$ch = curl_init( 'http://testportal.keendelivery.com/api/v2/label?api_token=' . $api_token );
+					$ch = curl_init( 'https://testportal.keendelivery.com/api/v2/label?api_token=' . $api_token );
 				}
 				$label_sizes = array();
                 foreach(json_decode(get_option('_keendelivery_shipping_methods')) as $shipping_methods){

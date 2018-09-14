@@ -16,7 +16,7 @@
  */
 defined( 'ABSPATH' ) or die( "Sorry, no access..." );
 
-define( 'KEENDELIVERY_VERSION', '1.0.4' );
+define( 'KEENDELIVERY_VERSION', '1.0.5' );
 
 
 // Load file for general KeenDelivery functions

@@ -363,7 +363,7 @@ function set_keen_service_options() {
                                                 } else if (type == 'hidden') {
                                                     result += ' type="hidden" value="' + jet_shipping_methods[k]['services'][i]['options'][j]['choices']['value'] + '" ';
                                                 } else if (type == 'date') {
-                                                    result += ' type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" ';
+                                                    result += ' type="text" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" class="datepicker"';
 
 
                                                 }
@@ -394,7 +394,7 @@ function set_keen_service_options() {
     jQuery('#keen_service_options').html('');
     jQuery('#keen_service_options').html(result);
 
-    jQuery('[type=date]').datepicker({dateFormat: 'dd-mm-yy'});
+    jQuery('.datepicker').datepicker({dateFormat: 'dd-mm-yy'});
 
     jQuery('[name="send_track_and_trace_email"]').prop("checked", +send_track_and_trace_mail);
 }

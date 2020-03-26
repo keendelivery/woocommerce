@@ -1,9 +1,9 @@
 ﻿=== KeenDelivery - WooCommerce plugin ===
 Contributors: KeenDelivery
 Tags: ecommerce, e-commerce, shipping, portal, keendelivery, shipment, jet verzendt, jetverzendt, keenportal, keen, delivery, dhl, dpd, tnt, postnl, pallets, parcels
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires at least: 4.0
-Tested up to: 4.9.2
+Tested up to: 5.3.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,5 +64,8 @@ Fixed Track&trace settings no longer overuled the user selected choice
 
 #1.0.5
 Fixed datepicker for datefields
+
+#1.0.6
+Update Wordpress version compatibility
 
 == Upgrade Notice ==
